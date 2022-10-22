@@ -24,7 +24,7 @@ class ApplicationBloc with ChangeNotifier {
   Place selectedLocationStatic;
   String placeType;
   List<Place> placeResults;
-  List<Marker> markers = List<Marker>();
+  List<Marker> markers = [];
 
 
   ApplicationBloc() {
@@ -87,6 +87,12 @@ class ApplicationBloc with ChangeNotifier {
 
       notifyListeners();
     }
+  }
+
+  setMarker(Place place){
+    var newMarker = markerService.createMarkerFromPlace(place,false);
+    markers.add(newMarker);
+    notifyListeners();
   }
 
 
